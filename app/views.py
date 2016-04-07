@@ -1,7 +1,9 @@
-from app import app, db
+from app import app, mysql
 from flask import render_template, request 
 
-@app.route('/', methods=['GET'])
-@app.route('/home', methods=['GET'])
-def home_page():
-	return render_template('home.html')
+@app.route('/')
+def users():
+    cur = mysql.connection.cursor()
+    cur.execute('''SELECT * FROM pdo_ret.members''')
+    rv = cur.fetchall()
+    return str(rv)
