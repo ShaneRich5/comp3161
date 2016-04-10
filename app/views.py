@@ -1,7 +1,8 @@
 from app import app
 from flask import render_template, request,flash
-from form import LoginForm,SignUpForm
+
 import datetime
+
 @app.route('/')
 def home():
     return render_template('home.html')
