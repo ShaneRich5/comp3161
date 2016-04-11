@@ -1,0 +1,32 @@
+from faker import Factory
+import random
+from datetime import *
+import uuid 
+
+#----------------------------------------------------------------------
+def user():
+    faker = Factory.create()
+    with open('dbTester.sql','w') as db_file:
+
+        #Creating the database
+        db_file.write('DROP DATABASE IF EXISTS DBTester;\n')
+        db_file.write('CREATE DATABASE DBTester;\n')
+        db_file.write('USE DBTester;\n\n\n')
+
+        #Creating tables
+        db_file.write('CREATE TABLE user(userId INTEGER(50) NOT NULL AUTO_INCREMENT, firstName VARCHAR(80) lastName VARCHAR(80) NOT NULL,' +
+                      '\ngender CHAR(1) NOT NULL, email VARCHAR(80), password VARCHAR(80) NOT NULL, recipeId INTEGER(50), ' +
+                      '\n createdAt DATE NOT NULL, updatedAt DATE NOT NULL, PRIMARY KEY(userId));\n\n\n')
+        
+        for i in range(1,5):
+            userId = ("CUS-" + str(i).zfill(8 - len(str(i))))
+            fName = faker.first_name()
+            lName = faker.last_name()
+            gender = random.choice(['F','M'])
+            email = faker.email()
+            password = ("password" + str(i))
+            recipeId = ("REC-" + str(i).zfill(9 - len(str(i))))
+            created = datetime.date(faker.date_time_this_decade())
+            updated = datetime.date(datetime.now()) + (created - datetime.date(datetime.now())) * random.random()
+            db_file.write('INSERT INTO user(userId,firstName, lastName, gender, email, password, recipeId, createdAt, updatedAt) VALUES(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\");\n'
+                          % (userId, fName, lName, gender, email, password, recipeId, created, updated))
