@@ -25,19 +25,19 @@ def migrate_database():
 			cur.execute(stmt)
 
 		create_user_table = """CREATE TABLE user(
-			email varchar(80) not null,
+			email varchar(100) not null,
 			password varchar(80) not null,
 			first_name varchar(80) not null,
 			last_name varchar(80) not null,
 			dob datetime not null,
 			gender varchar(10) not null,
-			Primary Key(email)
+			primary key(email)
 		);"""
 		
 		create_recipe_table = """CREATE TABLE recipe(
 			recipe_id integer(50) not null unique AUTO_INCREMENT,
-			name  varchar(80) not null,
-			rating  integer(20) not null,
+			name varchar(80) not null,
+			rating integer(20) not null,
 			preparation_time integer(20) not null,
 			Primary Key(recipe_id)
 		);"""
@@ -62,19 +62,19 @@ def migrate_database():
 			name varchar(80) not null,
 			quantity integer(50) not null,
 			units varchar(80) not null,
-			description varchar(80) not null
+			description varchar(80) not null,
 			Primary Key(name)
 		);"""
 
 		create_meal_table = """CREATE TABLE meal(
-			mid integer(50) not null unique AUTO_INCREMENT,
+			meal_id integer(50) not null unique AUTO_INCREMENT,
 			name varchar(80) not null,
 			type char(1) not null,
 			recipeId integer(50) not null,
 			calories varchar(20) not null,
 			image varchar(80) not null,
 			serving_size varchar(30) not null,
-			Primary Key(mid)
+			Primary Key(meal_id)
 		);"""
 
 		create_inventory_table = """CREATE TABLE inventory(
@@ -107,9 +107,14 @@ def migrate_database():
 			Primary Key(sid)
 		);"""
 
-		statements = [create_user_table, create_meal_table, 
-			create_recipe_table, create_ingredient_table, create_instruction_table,
-			create_inventory_table, create_mealplan_table, create_supermarket_table,
+		statements = [create_user_table,  
+			create_recipe_table, 
+			create_ingredient_table, 
+			create_instruction_table,
+			create_inventory_table, 
+			create_mealplan_table, 
+			create_supermarket_table,
+			create_meal_table,
 			create_adds_table
 		]
 
@@ -137,10 +142,6 @@ def populate_database():
 
 		# populate user
 
-		user_insert_stmt = """INSERT INTO 
-				user(first_name, last_name, gender, email, password, dob)
-				values ('{}', '{}', '{}', '{}', '{}', '{}');"""
-
 		emails = []
 
 		for i in range(1, 500001):
@@ -157,69 +158,64 @@ def populate_database():
 
 			password = first_name
 
-			user_insert_stmt.format(first_name, last_name, gender, email, password, dob)
+			user_insert_stmt = """INSERT INTO 
+				user(first_name, last_name, gender, email, password, dob)
+				values ('{}', '{}', '{}', '{}', '{}', '{}');""".format(first_name, last_name, gender, email, password, dob)
 
-			print user_insert_stmt
+			# print user_insert_stmt
 			
 			cur.execute(user_insert_stmt)
 
 		# populate recipe
-
-		recipe_insert_stmt = """INSERT INTO
-				recipe(name, rating, preparation_time)
-				values ('{}', {}, {});"""
 
 		for i in range(1, 1000001):
 			name = fake.word
 			rating = random.randrange(0, 11)
 			preparation_time = random.randrange(30, 121)
 
-			recipe_insert_stmt.format(name, rating, preparation_time)
+			
+			recipe_insert_stmt = """INSERT INTO
+				recipe(name, rating, preparation_time)
+				values ('{}', {}, {});""".format(name, rating, preparation_time)
 			cur.execute(recipe_insert_stmt)
 
 		# populate adds (user_recipe pivot) table
-
-		adds_insert_stmt = """INSERT INTO
-				adds(user_id, recipe_id, created_at, updated_at)
-				values ({}, {});"""
 
 		for i in range(1, 1000001):
 			user_id = random.randrange(0, 500001)
 			recipe_id = i
 
-			adds_insert_stmt.format(user_id, recipe_id)
+			adds_insert_stmt = """INSERT INTO
+				adds(user_id, recipe_id, created_at, updated_at)
+				values ({}, {});""".format(user_id, recipe_id)
+			
 			cur.execute(adds_insert_stmt)
 
 		# populate ingredients table
-
-		ingredient_insert_stmt = """INSERT INTO
-				ingredient(name, quantity, units, note)
-				values ('{}', {}, '{}', '{}');"""
 
 		for i in range(0, 50000):
 			name = fake.word()
 			quantity = random.randrange(4, 20)
 			units = unit_options[random.randrange(0, len(unit_options))]
-			descr = fake.words()
+			description = fake.words()
+
+			ingredient_insert_stmt = """INSERT INTO
+				ingredient(name, quantity, units, note)
+				values ('{}', {}, '{}', '{}');""".format(name, quantity, units, description)
 			
 		# populate instructions table
-
-		instruction_insert_stmt = """INSERT INTO
-				instruction(recipe_id, sequence, action)
-				values({}, {}, '{}');"""
 
 		for recipe_id in range(1, 1000001):
 			for sequence in range(1, 11):
 				action = fake.words()
 
-				instruction_insert_stmt.format(recipe_id, sequence, action)
+				instruction_insert_stmt = """INSERT INTO
+					instruction(recipe_id, sequence, action)
+					values({}, {}, '{}');""".format(recipe_id, sequence, action)
+
 				cur.execute(instruction_insert_stmt)
 
-		
-
 		con.commit()
-
-
 
 	except mdb.Error, e:
 		print "Error %d: %s" % (e.args[0], e.args[1])
