@@ -1,0 +1,19 @@
+{
+  "name": "recipe book",
+  "homepage": "https://github.com/ShaneRich5/comp3161",
+  "authors": [
+    "shane <shane.richards121@gmail.com>"
+  ],
+  "description": "School project",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -6,6 +6,4 @@ app.config.from_object('config')
 mysql = MySQL()
 mysql.init_app(app)
 
-app.conn = mysql.connect()
-
 from app import views

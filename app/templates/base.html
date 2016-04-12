@@ -1,9 +1,16 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>COMP3161</title>
+	<title>Recipe Book</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	{% block css %}{% endblock %}
 </head>
 <body>
-	
+	<div class="container">
+		{% block body %}{% endblock %}
+	</div>
+
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	{% block js %}{% endblock %}
 </body>
 </html>

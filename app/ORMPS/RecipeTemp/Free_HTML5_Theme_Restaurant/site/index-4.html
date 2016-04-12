@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+     <title>Submit Recipe</title>
+     <meta charset="utf-8">
+     <link rel="icon" href="images/favicon.ico">
+     <link rel="shortcut icon" href="images/favicon.ico" />
+     <link rel="stylesheet" href="css/style.css">
+     <script src="js/jquery.js"></script>
+     <script src="js/jquery-migrate-1.1.1.js"></script>
+     <script src="js/jquery.equalheights.js"></script>
+     <script src="js/jquery.ui.totop.js"></script>
+     <script src="js/jquery.easing.1.3.js"></script>
+     <script>
+        $(document).ready(function(){
+          $( ".block1" ).mouseover(function() {
+            $(this).addClass( "blur" );
+          });
+          $( ".block1" ).mouseout(function() {
+            $(this).removeClass( "blur" );
+          });
+          $().UItoTop({ easingType: 'easeOutQuart' });
+        }) 
+     </script>
+     <!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+         </a>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    
+      <script src="js/html5shiv.js"></script>
+      <link rel="stylesheet" media="screen" href="css/ie.css">
+    <![endif]-->
+    <!--[if lt IE 10]>
+      <link rel="stylesheet" media="screen" href="css/ie1.css">
+    <![endif]-->
+    
+     </head>
+     <body class="page1">
+
+<!--==============================header=================================-->
+ <header> 
+  <div class="container_12">
+   <div class="grid_12"> 
+    <div class="socials">
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#" class="last"></a>
+    </div>
+    <h1 class="ompars"><span>Online Meal Planner and Recipe System</span> </h1>
+    <div class="menu_block">
+
+
+    <nav id="bt-menu" class="bt-menu">
+        <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+        <ul>
+          <li class="bt-icon "><a href="index.html">Home</a></li>
+		   <li class="current bt-icon"><a href="index-4.html">Submit Recipe</a></li>
+			<li class="bt-icon"><a href="index-3.html">Recent Recipes</a></li>
+			<li class="bt-icon"><a href="index-2.html">Meal Planner</a></li>
+			<li class="bt-icon"><a href="index-1.html">Shopping List</a></li>
+        </ul>
+      </nav>
+    
+ <div class="clear"></div>
+</div>
+<div class="clear"></div>
+          </div>
+      </div>
+</header>
+
+<!--==============================Content=================================-->
+
+
+<div class="content"><div class="ic">More Website Templates @ TemplateMonster.com - December 02, 2013!</div>
+  <div class="container_12">
+    <div class="grid_8">  
+      <h3 class="">Submit Recipe</h3>
+      <div class="post">
+       
+        <div class="extra_wrapper">
+         
+          <p class="col1">
+          
+			<p><strong>Recipe Information</strong>&nbsp;&nbsp;<span class="required">*</span> required fields</p>
+							<table cellpadding="0" cellspacing="0" class="submit">
+							<tr>
+
+								<td>
+									Recipe Category (Select One)<span class="required">*</span>&nbsp;&nbsp;
+								    									<input class="check" type="radio" name="recipe_category_id" id="1" value="1"  /> Breakfast&nbsp;&nbsp;&nbsp;&nbsp;									
+																		<input class="check" type="radio" name="recipe_category_id" id="2" value="2"  /> Lunch&nbsp;&nbsp;&nbsp;&nbsp;									
+																		<input class="check" type="radio" name="recipe_category_id" id="3" value="3"  /> Dinner&nbsp;&nbsp;&nbsp;&nbsp;									
+																		<input class="check" type="radio" name="recipe_category_id" id="4" value="4"  /> Snacks	
+																		
+								</td>
+							</tr>
+			
+          
+          <p class="col1">
+           <div class="stars">
+			  <form action="">
+			  <input class="star star-5" id="star-5" type="radio" name="star"/>
+				<label class="star star-5" for="star-5"></label>
+				<input class="star star-4" id="star-4" type="radio" name="star"/>
+				<label class="star star-4" for="star-4"></label>
+				<input class="star star-3" id="star-3" type="radio" name="star"/>
+				<label class="star star-3" for="star-3"></label>
+				<input class="star star-2" id="star-2" type="radio" name="star"/>
+				<label class="star star-2" for="star-2"></label>
+				<input class="star star-1" id="star-1" type="radio" name="star"/>
+				<label class="star star-1" for="star-1"></label>
+			  </form>
+          </p>
+        </div>
+		<tr class="visible-online ">
+								<th>Recipe Ingredients<span class="required">*</span><br />
+								You may list up to 12 ingredients below. Please list a quantity and select a specific unit of measurement from the drop-downs below, for each ingredient.</th>
+							</tr>
+							<tr class="visible-online ">
+								<td>
+									<table>
+										<tr>
+											<td><em>Ingredients</em></td>
+											<td><em>Quantity</em></td>
+											<td><em>Unit</em></td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i1" id="i1" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q1" name="q1" id="q1" maxlength="4" value="" /></td>
+											<td>
+												<select name="um1" class="um">
+													<option></option>
+													<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+<option value="Sticks">Sticks</option>
+<option value="Each">Each</option>
+<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i2" id="i2" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q2" name="q2" id="q2" maxlength="4" value="" /></td>
+											<td>
+												<select name="um2" class="um">
+													<option></option>
+										<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+										<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+										<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+										<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+										<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+										<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+										<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+										<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+										<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+										<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+										<option value="Sticks">Sticks</option>
+										<option value="Each">Each</option>
+										<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i3" id="i3" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q3" name="q3" id="q3" maxlength="4" value="" /></td>
+											<td>
+												<select name="um3" class="um">
+													<option></option>
+													<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+													<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+													<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+													<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+													<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+													<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+													<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+													<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+													<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+													<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+													<option value="Sticks">Sticks</option>
+													<option value="Each">Each</option>
+													<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i4" id="i4" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q4" name="q4" id="q4" maxlength="4" value="" /></td>
+											<td>
+												<select name="um4" class="um">
+													<option></option>
+													<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+													<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+													<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+													<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+													<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+													<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+													<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+													<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+													<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+													<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+													<option value="Sticks">Sticks</option>
+													<option value="Each">Each</option>
+													<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i5" id="i5" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q5" name="q5" id="q5" maxlength="4" value="" /></td>
+											<td>
+												<select name="um5" class="um">
+													<option></option>
+													<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+													<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+													<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+													<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+													<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+													<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+													<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+													<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+													<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+													<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+													<option value="Sticks">Sticks</option>
+													<option value="Each">Each</option>
+													<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i6" id="i6" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q6" name="q6" id="q6" maxlength="4" value="" /></td>
+											<td>
+												<select name="um6" class="um">
+													<option></option>
+													<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+<option value="Sticks">Sticks</option>
+<option value="Each">Each</option>
+<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i7" id="i7" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q7" name="q7" id="q7" maxlength="4" value="" /></td>
+											<td>
+												<select name="um7" class="um">
+													<option></option>
+													<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+<option value="Sticks">Sticks</option>
+<option value="Each">Each</option>
+<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i8" id="i8" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q8" name="q8" id="q8" maxlength="4" value="" /></td>
+											<td>
+												<select name="um8" class="um">
+													<option></option>
+													<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+<option value="Sticks">Sticks</option>
+<option value="Each">Each</option>
+<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i9" id="i9" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q9" name="q9" id="q9" maxlength="4" value="" /></td>
+											<td>
+												<select name="um9" class="um">
+													<option></option>
+													<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+<option value="Sticks">Sticks</option>
+<option value="Each">Each</option>
+<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i10" id="i10" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q10" name="q10" id="q10" maxlength="4" value="" /></td>
+											<td>
+												<select name="um10" class="um">
+													<option></option>
+													<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+<option value="Sticks">Sticks</option>
+<option value="Each">Each</option>
+<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i11" id="i11" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q11" name="q11" id="q11" maxlength="4" value="" /></td>
+											<td>
+												<select name="um11" class="um">
+													<option></option>
+													<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+<option value="Sticks">Sticks</option>
+<option value="Each">Each</option>
+<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				<tr>
+											<td><input type="text" class="ingredient" name="i12" id="i12" value="" /> 	</td>
+											<td><input type="text" class="quantity" id="q12" name="q12" id="q12" maxlength="4" value="" /></td>
+											<td>
+												<select name="um12" class="um">
+													<option></option>
+													<option value="tbsp&#40;s&#41; &#40;tablespoons&#41;">tbsp&#40;s&#41; &#40;tablespoons&#41;</option>
+<option value="tsp&#40;s&#41; &#40;teaspoons&#41;">tsp&#40;s&#41; &#40;teaspoons&#41;</option>
+<option value="c&#40;s&#41; &#40;cups&#41;">c&#40;s&#41; &#40;cups&#41;</option>
+<option value="oz&#40;s&#41; &#40;ounces&#41;">oz&#40;s&#41; &#40;ounces&#41;</option>
+<option value="fl oz&#40;s&#41; &#40;fluid ounces&#41;">fl oz&#40;s&#41; &#40;fluid ounces&#41;</option>
+<option value="lb&#40;s&#41; &#40;pounds&#41;">lb&#40;s&#41; &#40;pounds&#41;</option>
+<option value="g&#40;s&#41; &#40;grams&#41;">g&#40;s&#41; &#40;grams&#41;</option>
+<option value="qt&#40;s&#41; &#40;quarts&#41;">qt&#40;s&#41; &#40;quarts&#41;</option>
+<option value="pt&#40;s&#41; &#40;pints&#41;">pt&#40;s&#41; &#40;pints&#41;</option>
+<option value="pkg&#40;s&#41; &#40;packages&#41;">pkg&#40;s&#41; &#40;packages&#41;</option>
+<option value="Sticks">Sticks</option>
+<option value="Each">Each</option>
+<option value="Other">Other</option>
+												</select> 											</td>
+										</tr>
+																				
+										<!---->
+												
+									</table>
+								</td>
+							</tr>
+							<tr class="visible-online ">
+								<th>Recipe Directions<span class="required">*</span><br />
+								Please specify length of time to prep as well as cook time and/or bake time. </th>
+							</tr>
+							<tr class="visible-online ">
+								<td><textarea rows="3" cols="5000" name="directions" id="directions" onblur="this.value= replaceWordCharacters(this.value);"></textarea></td>
+							</tr>
+							<tr class="visible-online ">
+								<th>Please provide the serving size.<span class="required">*</span></th>
+							</tr>
+							<tr class="visible-online ">
+																<td>
+									<select name="serving_size">
+																				<option value="1" >1</option>
+																				<option value="2" >2</option>
+																				<option value="3" >3</option>
+																				<option value="4" >4</option>
+																				<option value="5" >5</option>
+																				<option value="6" >6</option>
+																				<option value="7" >7</option>
+																				<option value="8" >8</option>
+																				<option value="9" >9</option>
+																				<option value="10" >10</option>
+																				<option value="11" >11</option>
+																				<option value="12" >12</option>
+																				<option value="13" >13</option>
+																				<option value="14" >14</option>
+																				<option value="15" >15</option>
+																				<option value="16" >16</option>
+																				<option value="17" >17</option>
+																				<option value="18" >18</option>
+																				<option value="19" >19</option>
+																				<option value="20" >20</option>
+																				<option value="21" >21</option>
+																				<option value="22" >22</option>
+																				<option value="23" >23</option>
+																				<option value="24" >24</option>
+																				<option value="25" >25</option>
+																				<option value="26" >26</option>
+																				<option value="27" >27</option>
+																				<option value="28" >28</option>
+																				<option value="29" >29</option>
+																				<option value="30" >30</option>
+																				<option value="31" >31</option>
+																				<option value="32" >32</option>
+																				<option value="33" >33</option>
+																				<option value="34" >34</option>
+																				<option value="35" >35</option>
+																				<option value="36" >36</option>
+																				<option value="37" >37</option>
+																				<option value="38" >38</option>
+																				<option value="39" >39</option>
+																				<option value="40" >40</option>
+																			</select>
+								
+								</td>
+							
+								<td><textarea rows="3" cols="5000" name="story" id="story" onblur="this.value= replaceWordCharacters(this.value);"></textarea></td>
+							</tr>
+							<tr class="visible-online ">
+								<th>Upload Recipe Photo. Select a file from your computer (Accepted file types include JPG, TIF, PSD, or PNG)</th>
+							</tr>
+							
+							<tr class="visible-upload hide">
+							    <th>Upload Recipe Photo. Select a file from your computer (Accepted file types include JPG, TIF, PSD, or PNG)<br>
+								</th>
+							</tr>
+							
+							<tr>
+								<td>                                   								
+                               
+                                <div id="file-uploader">   
+									
+                                    <noscript>            
+                                        <p>Please enable JavaScript to use file uploader.</p>
+                                        <!-- or put a simple form for upload here -->
+                                    </noscript>         
+                                </div>
+                                
+                                <script>    
+                                    function createUploader(){ 								
+                                        var uploader2 = new qq.FileUploader({
+                                            element: document.getElementById('file-uploader'),
+                                            action: 'upload.php',
+                                            allowedExtensions:['jpg', 'png', 'tif', 'psd'],
+                                            debug: false,
+                                            showMessage: function(message){
+                                                alert('Accepted file types include JPG, TIF, PSD, or PNG. Please choose a valid file type.');
+                                                $('#file-uploader-error').html(message);
+												
+                                            },
+                                            onComplete: function(id, fileName, responseJSON){
+                                                if (!responseJSON.error){
+												
+                                                    $('#file-uploader-error').html('');
+                                                }else{
+                                                    $('#file-uploader-error123').style.display = 'block';
+                                                    //$('#file-uploader-error').html(responseJSON.error);
+                                                    //alert(responseJSON.error);
+                                                }
+                                            },
+                                            multiple: false,
+                                            maxFiles: 1,
+                                            initialFiles: []
+                                            }); 
+                                    }
+                                    
+                                    // in your app create uploader as soon as the DOM is ready
+                                    // don't wait for the window to load  
+                                    createUploader();     
+                                </script>    
+                               
+																</td>
+							</tr>
+							
+							
+							<tr class="visible-upload hide">
+							    <th>Upload a photo of your recipe card (with recipe ingredients and directions)</th>
+							</tr>
+							
+							
+							<tr class="visible-upload hide">
+								<td>                                   								
+                               
+                                <div id="file-uploader1">        
+                                    <noscript>            
+                                        <p>Please enable JavaScript to use file uploader.</p>
+                                        <!-- or put a simple form for upload here -->
+                                    </noscript>         
+                                </div>
+                                
+                                <script>    
+                                    function createUploader1(){            
+                                        var uploader2 = new qq.FileUploader({
+                                            element: document.getElementById('file-uploader1'),
+                                            action: 'upload.php?submission=submission1&location=photo-files-location1',
+                                            debug: false,
+                                            showMessage: function(message){
+                                                $('#file-uploader1-error').html(message);
+                                            },
+                                            onComplete: function(id, fileName, responseJSON){
+                                                if (!responseJSON.error){
+                                                    $('#file-uploader1-error').html('');
+                                                }else{
+                                                    //alert(responseJSON.error);
+                                                }
+                                            },
+                                            multiple: false,
+                                            maxFiles: 1,
+                                            initialFiles: []
+                                            }); 
+                                    }
+                                    
+                                    // in your app create uploader as soon as the DOM is ready
+                                    // don't wait for the window to load  
+                                    createUploader();     
+                                </script>    
+                              
+																</td>
+							</tr>
+							
+							</table>
+
+							<p class="dotted-line">&nbsp;</p>
+							<p class="align-center"><input type="image" id="submitButton" src="/images/btn-submit.jpg" /></p>
+							</form>
+						</div>  
+					</div>
+					<div><img src="/images/submit-bottom.jpg" width="898" height="11" alt="" /></div>
+
+				</div>
+								
+			</div>
+			<div><img src="/images/box-bottom.jpg" width="955" height="12" alt="" /></div>
+			
+		</div>
+		<div class="clearit">&nbsp;</div>
+		
+	</div>
+	<div class="clearit">&nbsp;</div>
+	<!-- END content -->
+	
+	
+		
+      </div>
+      
+    </div>  
+    
+
+<!--==============================footer=================================-->
+
+<footer>    
+  <div class="container_12">
+    <div class="grid_6 prefix_3">
+      <h1 class="ompars2"><span>Online Meal Planner and Recipe System</span> </h1>
+      <div class="copy">
+      &copy; 2016 | <a href="#">Privacy Policy</a> <br> Website   designed by Keniel-Shane-Shaunna-Simone
+      </div>
+    </div>
+  </div>
+</footer>
+     <script>
+      $(document).ready(function(){ 
+         $(".bt-menu-trigger").toggle( 
+          function(){
+            $('.bt-menu').addClass('bt-menu-open'); 
+          }, 
+          function(){
+            $('.bt-menu').removeClass('bt-menu-open'); 
+          } 
+        ); 
+      }) 
+    </script>
+</body>
+</html>

@@ -168,8 +168,8 @@ def populate_database():
 
 		# populate recipe
 
-		for i in range(1, 1000001):
-			name = fake.word
+		for index in range(1, 1000001):
+			name = "recipe_" + str(index)
 			rating = random.randrange(0, 11)
 			preparation_time = random.randrange(30, 121)
 
