@@ -160,7 +160,7 @@ def populate_database():
 
 			user_insert_stmt = """INSERT INTO 
 				user(first_name, last_name, gender, email, password, dob)
-				values ('{}', '{}', '{}', '{}', '{}', '{}');""".format(first_name, last_name, gender, email, password, dob)
+				values ("{}", "{}", "{}", "{}", "{}", "{}");""".format(first_name, last_name, gender, email, password, dob)
 
 			# print user_insert_stmt
 			
@@ -177,6 +177,9 @@ def populate_database():
 			recipe_insert_stmt = """INSERT INTO
 				recipe(name, rating, preparation_time)
 				values ('{}', {}, {});""".format(name, rating, preparation_time)
+			
+			# print recipe_insert_stmt
+
 			cur.execute(recipe_insert_stmt)
 
 		# populate adds (user_recipe pivot) table
@@ -188,7 +191,9 @@ def populate_database():
 			adds_insert_stmt = """INSERT INTO
 				adds(user_id, recipe_id, created_at, updated_at)
 				values ({}, {});""".format(user_id, recipe_id)
-			
+
+			# print adds_insert_stmt
+
 			cur.execute(adds_insert_stmt)
 
 		# populate ingredients table
@@ -203,6 +208,10 @@ def populate_database():
 				ingredient(name, quantity, units, note)
 				values ('{}', {}, '{}', '{}');""".format(name, quantity, units, description)
 			
+			# print ingredient_insert_stmt
+
+			cur.execute(ingredient_insert_stmt)
+
 		# populate instructions table
 
 		for recipe_id in range(1, 1000001):
