@@ -66,17 +66,6 @@ def migrate_database():
 			Primary Key(name)
 		);"""
 
-		create_meal_table = """CREATE TABLE meal(
-			meal_id integer(50) not null unique AUTO_INCREMENT,
-			name varchar(80) not null,
-			type char(1) not null,
-			recipeId integer(50) not null,
-			calories varchar(20) not null,
-			image varchar(80) not null,
-			serving_size varchar(30) not null,
-			Primary Key(meal_id)
-		);"""
-
 		create_inventory_table = """CREATE TABLE inventory(
 			inid integer(50) not null unique,
 			quantity integer(20) not null,
@@ -88,12 +77,32 @@ def migrate_database():
 		);"""
 
 		create_mealplan_table = """CREATE TABLE mealplan(
-			mpid integer(50) not null unique,
-			mealId integer(50) not null,
+			mealplan_id integer(50) not null unique,
+			meal_id integer(50) not null,
 			countMeal integer(50) not null,
 			updated_at date not null,
 			created_at date not null,
-			Primary Key(mpid)
+			Primary Key(mealplan_id)
+		);"""
+
+		create_meal_table = """CREATE TABLE meal(
+			meal_id integer(50) not null unique AUTO_INCREMENT,
+			name varchar(80) not null,
+			type char(1) not null,
+			calories varchar(20) not null,
+			image varchar(80) not null,
+			serving_size varchar(30) not null,
+			recipe_id integer(50) not null,
+			Primary Key(meal_id),
+			foreign key(recipe_id) references recipe(recipe_id) on update cascade on delete cascade
+		);"""
+	
+		create_generates_table = """CREATE TABLE generates(
+			meal_id integer(50) not null,
+			mealplan_id integer(50) not null,
+			primary key(meal_id, mealplan_id),
+			foreign key (meal_id) references meal(meal_id) on update cascade on delete cascade,
+			foreign key (mealplan_id) references mealplan(mealplan_id) on update cascade on delete cascade
 		);"""
 
 		create_supermarket_table = """CREATE TABLE supermarketlist(
@@ -115,7 +124,8 @@ def migrate_database():
 			create_mealplan_table, 
 			create_supermarket_table,
 			create_meal_table,
-			create_adds_table
+			create_adds_table,
+			create_generates_table
 		]
 
 		for stmt in statements:
@@ -224,6 +234,8 @@ def populate_database():
 
 				cur.execute(instruction_insert_stmt)
 
+
+
 		con.commit()
 
 	except mdb.Error, e:
@@ -237,7 +249,7 @@ def populate_database():
 
 
 migrate_database()
-populate_database()
+# populate_database()
 
 
 # [method for method in dir(fake) if callable(getattr(fake, method))]

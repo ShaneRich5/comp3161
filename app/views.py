@@ -1,18 +1,18 @@
-from app import app, db
+from app import app
 from flask import render_template, request,flash
 import helpers
 from werkzeug.datastructures import MultiDict
 
 import datetime
 
-// ====================================
-//				Basic Pages
-// ====================================
+# ====================================
+#				Basic Pages
+# ====================================
 @app.route('/')
 def home():
     return render_template('home.html')
 
-@app.route('/about', methods="[GET"])
+@app.route('/about', methods=['GET'])
 def about():
 	return render_template('about.html')
 
@@ -24,17 +24,21 @@ def register():
 def login():
 	return render_template('login.html')
 
-
+# ====================================
+#				Form Pages
+# ====================================
 @app.route('/register', methods=['POST'])
 def save_user():
 	helpers.save_user(request.form)
-
 
 @app.route('/login', methods=['POST'])
 def authenticate():
 	helpers.authenticate(request.form)
 	return render_template('home.html')
 
+# ====================================
+#				Query Pages
+# ====================================
 @app.route('/users', methods=['GET'])
 def all_users():
 	return 

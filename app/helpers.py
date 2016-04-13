@@ -7,7 +7,12 @@ import random
 def retrieve_all_users():
 	cur, conn = initialize_connection()
 
-	
+	cur.execute('SELECT * FROM user');
+	results = cur.fetchall()
+
+	print results
+
+	cleanup_connection(conn)
 
 def save_user(user):
 	cursor, connection = initialize_connection()
