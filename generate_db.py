@@ -154,7 +154,7 @@ def populate_database():
 
 		emails = []
 
-		for i in range(1, 500001):
+		for i in range(1, 5000):
 			first_name = fake.first_name()
 			last_name = fake.last_name()
 			gender = gender_opt[random.randrange(0, 2)]
@@ -172,13 +172,13 @@ def populate_database():
 				user(first_name, last_name, gender, email, password, dob)
 				values ("{}", "{}", "{}", "{}", "{}", "{}");""".format(first_name, last_name, gender, email, password, dob)
 
-			# print user_insert_stmt
+			print i
 			
 			cur.execute(user_insert_stmt)
 
 		# populate recipe
 
-		for index in range(1, 1000001):
+		for index in range(1, 1000):
 			name = "recipe_" + str(index)
 			rating = random.randrange(0, 11)
 			preparation_time = random.randrange(30, 121)
@@ -194,8 +194,8 @@ def populate_database():
 
 		# populate adds (user_recipe pivot) table
 
-		for i in range(1, 1000001):
-			user_id = random.randrange(0, 500001)
+		for i in range(1, 1000):
+			user_id = random.randrange(0, 5000)
 			recipe_id = i
 
 			adds_insert_stmt = """INSERT INTO
@@ -224,15 +224,15 @@ def populate_database():
 
 		# populate instructions table
 
-		for recipe_id in range(1, 1000001):
-			for sequence in range(1, 11):
-				action = fake.words()
+		# for recipe_id in range(1, 1000001):
+		# 	for sequence in range(1, 11):
+		# 		action = fake.words()
 
-				instruction_insert_stmt = """INSERT INTO
-					instruction(recipe_id, sequence, action)
-					values({}, {}, '{}');""".format(recipe_id, sequence, action)
+		# 		instruction_insert_stmt = """INSERT INTO
+		# 			instruction(recipe_id, sequence, action)
+		# 			values({}, {}, '{}');""".format(recipe_id, sequence, action)
 
-				cur.execute(instruction_insert_stmt)
+		# 		cur.execute(instruction_insert_stmt)
 
 
 

@@ -75,7 +75,7 @@ def ingredients_all():
 
 @app.route('/ingredients/<ingredient_id>', methods=['GET'])
 def ingredient_show_by_id(ingredient_id):
-	ingredients = helpers.show_ingredient(ingredient_id)
+	ingredient = helpers.show_ingredient(ingredient_id)
 	return render_template('ingredient_show')
 
 @app.route('/recipes', methods=['GET'])

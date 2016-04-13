@@ -5,48 +5,48 @@ import random
 
 def all_users():
 	cur, conn = initialize_connection()
-
 	cur.execute('SELECT * FROM user');
 	results = cur.fetchall()
-
 	print results
-
 	cleanup_connection(conn)
+	return results
 
 def all_ingredients():
 	cur, conn = initialize_connection()
-
 	cur.execute('SELECT * FROM ingredient');
 	results = cur.fetchall()
-
 	print results
-
 	cleanup_connection(conn)
+	return results
 
 def all_recipe():
 	cur, conn = initialize_connection()
-
 	cur.execute('SELECT * FROM recipe');
 	results = cur.fetchall()
-
 	print results
-
 	cleanup_connection(conn)
+	return results
 
 def show_user(email):
 	cur, conn = initialize_connection()
 	cur.execute("SELECT * FROM user WHERE email = '{}'".format(email))
+	result = cur.fetchone()
 	cleanup_connection(conn)
+	return result
 
 def show_recipe(id):
 	cur, conn = initialize_connection()
 	cur.execute("SELECT * FROM recipe WHERE recipe_id = '{}'".format(id))
+	result = cur.fetchone()
 	cleanup_connection(conn)
+	return result
 
 def show_ingredient(id):
 	cur, conn = initialize_connection()
 	cur.execute("SELECT * FROM ingredient WHERE ingredient_id = '{}'".format(id))
+	result = cur.fetchone()
 	cleanup_connection(conn)
+	return result
 
 def save_user(user):
 	cursor, connection = initialize_connection()
