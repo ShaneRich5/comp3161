@@ -47,7 +47,8 @@ def authenticate():
 
 @app.route('/recipes', methods=['POST'])
 def recipe_save():
-	helpers.save_recipe(request.form)
+	email = session['email']
+	helpers.save_recipe(request.form, email)
 	return render_template('recipe_all.html')
 
 @app.route('/ingredients', methods=['POST'])

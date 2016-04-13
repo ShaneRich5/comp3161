@@ -154,7 +154,7 @@ def populate_database():
 
 		emails = []
 
-		for i in range(1, 5000):
+		for i in range(1, 500001):
 			first_name = fake.first_name()
 			last_name = fake.last_name()
 			gender = gender_opt[random.randrange(0, 2)]
@@ -172,41 +172,47 @@ def populate_database():
 				user(first_name, last_name, gender, email, password, dob)
 				values ("{}", "{}", "{}", "{}", "{}", "{}");""".format(first_name, last_name, gender, email, password, dob)
 
-			print i
+			print "user record: {}".format(i)
 			
 			cur.execute(user_insert_stmt)
 
+		con.commit()
+
 		# populate recipe
 
-		for index in range(1, 1000):
+		for index in range(1, 1000001):
 			name = "recipe_" + str(index)
 			rating = random.randrange(0, 11)
 			preparation_time = random.randrange(30, 121)
-
 			
 			recipe_insert_stmt = """INSERT INTO
 				recipe(name, rating, preparation_time)
 				values ('{}', {}, {});""".format(name, rating, preparation_time)
 			
-			# print recipe_insert_stmt
+			print "recipe record: {}".format(index)
 
 			cur.execute(recipe_insert_stmt)
 
+		con.commit()
+
 		# populate adds (user_recipe pivot) table
 
-		for i in range(1, 1000):
-			user_id = random.randrange(0, 5000)
+		for i in range(1, 1000000):
+			email = emails[random.randrange(0, len(emails))]
 			recipe_id = i
 
 			adds_insert_stmt = """INSERT INTO
-				adds(user_id, recipe_id, created_at, updated_at)
-				values ({}, {});""".format(user_id, recipe_id)
+				adds(email, recipe_id)
+				values ('{}', {});""".format(email, recipe_id)
 
-			# print adds_insert_stmt
+			print "pivot record: {}".format(i)
 
 			cur.execute(adds_insert_stmt)
 
+		con.commit()
+
 		# populate ingredients table
+
 
 		for i in range(0, 50000):
 			name = fake.word()
