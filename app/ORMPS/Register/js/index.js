@@ -1,4 +1,4 @@
-var working = false;
+ var working = false;
 $('.register').on('submit', function(e) {
   e.preventDefault();
   if (working) return;

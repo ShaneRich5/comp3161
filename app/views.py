@@ -9,6 +9,7 @@ import datetime
 #				Basic Pages
 # ====================================
 @app.route('/')
+@app.route('/home')
 def home():
     return render_template('home.html')
 
@@ -27,7 +28,7 @@ def login():
 @app.route('/logout')
 def logout():
 	session.pop('email', None)
-	return render_template('home.html')
+	return render_template('home')
 
 # ====================================
 #				Post Request
@@ -35,13 +36,13 @@ def logout():
 @app.route('/register', methods=['POST'])
 def save_user():
 	helpers.save_user(request.form)
-	request.cookies.get('email')
+	session['email'] = request.form['email']
 	return render_template('home.html')
 
 @app.route('/login', methods=['POST'])
 def authenticate():
 	helpers.authenticate(request.form)
-	request.cookies.get('email')
+	session['email'] = request.form['email']
 	return render_template('home.html')
 
 @app.route('/recipes', methods=['POST'])
@@ -54,8 +55,6 @@ def ingredient_save():
 	helpers.save_ingredient(request.form)
 	return render_template('ingredients_all.html')
 
-
-
 # ====================================
 #				Query Pages
 # ====================================
@@ -66,29 +65,39 @@ def user_all():
 
 @app.route('/users/<user_id>', methods=['GET'])
 def user_show_by_id(user_id):
-	users = helpers.all_users()
+	users = helpers.show_user(user_id)
 	return render_template('users_all')
 
 @app.route('/ingredients', methods=['GET'])
 def ingredients_all():
-	ingredients = helpers.retrieve_all_ingredients()
+	ingredients = helpers.all_ingredients()
 	return render_template('ingredients_all')
 
 @app.route('/ingredients/<ingredient_id>', methods=['GET'])
 def ingredient_show_by_id(ingredient_id):
-	ingredients = helpers.retrieve_all_ingredients()
+	ingredients = helpers.show_ingredient(ingredient_id)
 	return render_template('ingredient_show')
 
 @app.route('/recipes', methods=['GET'])
 def recipes_all():
-	recipes = helpers.retrieve_all_recipes()
+	recipes = helpers.all_recipes()
 	return render_template('recipes_all')
 
 @app.route('/recipes/<recipe_name>', methods=['GET'])
 def recipe_show_by_name(recipe_name):
-	recipe = helpers.retrieve_all_recipe()
+	recipe = helpers.show_recipe(recipe_name)
 	return render_template('recipe_show')
 
+# ====================================
+#				Search Page
+# ====================================
+@app.route('/search')
+def search():
+	return 'Search'
+
+# ====================================
+#				Error Pages
+# ====================================
 @app.errorhandler(404)
 def page_not_found(error):
 	return 'This page does not exist', 404

@@ -249,7 +249,7 @@ def populate_database():
 
 
 migrate_database()
-# populate_database()
+populate_database()
 
 
 # [method for method in dir(fake) if callable(getattr(fake, method))]

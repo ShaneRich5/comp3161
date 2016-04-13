@@ -3,7 +3,6 @@ import sys
 from faker import Factory
 import random
 
-
 def all_users():
 	cur, conn = initialize_connection()
 
@@ -12,6 +11,41 @@ def all_users():
 
 	print results
 
+	cleanup_connection(conn)
+
+def all_ingredients():
+	cur, conn = initialize_connection()
+
+	cur.execute('SELECT * FROM ingredient');
+	results = cur.fetchall()
+
+	print results
+
+	cleanup_connection(conn)
+
+def all_recipe():
+	cur, conn = initialize_connection()
+
+	cur.execute('SELECT * FROM recipe');
+	results = cur.fetchall()
+
+	print results
+
+	cleanup_connection(conn)
+
+def show_user(email):
+	cur, conn = initialize_connection()
+	cur.execute("SELECT * FROM user WHERE email = '{}'".format(email))
+	cleanup_connection(conn)
+
+def show_recipe(id):
+	cur, conn = initialize_connection()
+	cur.execute("SELECT * FROM recipe WHERE recipe_id = '{}'".format(id))
+	cleanup_connection(conn)
+
+def show_ingredient(id):
+	cur, conn = initialize_connection()
+	cur.execute("SELECT * FROM ingredient WHERE ingredient_id = '{}'".format(id))
 	cleanup_connection(conn)
 
 def save_user(user):
