@@ -1,6 +1,6 @@
 {% extends  "base.html" %}
 
-{% block css %}
+{% block head %}
 <style>
   /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
 	body {
@@ -187,7 +187,7 @@
 			<i class="fa fa-user"></i>
 			<input type="password" placeholder="Password" />
 			<i class="fa fa-key"></i>
-			<a href="/Register/index2.html">Need to create an account?</a>
+			<a href="/register">Need to create an account?</a>
 			<button>
 				<i class="spinner"></i>
 				<span class="state">Log in</span>
@@ -197,6 +197,6 @@
 	</div>
 {% endblock %}
 
-{% block js %}
+{% block end %}
 	<script src="static/js/login.js"></script>
 {% endblock %}

@@ -23,13 +23,14 @@ def migrate_database():
 			cur.execute(stmt)
 
 		create_user_table = """CREATE TABLE user(
+			user_id integer(50) not null unique AUTO_INCREMENT,
 			email varchar(100) not null,
 			password varchar(80) not null,
 			first_name varchar(80) not null,
 			last_name varchar(80) not null,
 			dob datetime not null,
 			gender varchar(10) not null,
-			primary key(email)
+			primary key(user_id)
 		);"""
 		
 		create_recipe_table = """CREATE TABLE recipe(
@@ -41,10 +42,10 @@ def migrate_database():
 		);"""
 
 		create_adds_table = """CREATE TABLE adds(
-			email varchar(80) not null,
+			user_id integer(80) not null,
 			recipe_id integer(50) not null,
-			primary key(email, recipe_id),
-			foreign key(email) references user(email) on update cascade on delete cascade,
+			primary key(user_id, recipe_id),
+			foreign key(user_id) references user(user_id) on update cascade on delete cascade,
 			foreign key(recipe_id) references recipe(recipe_id) on update cascade on delete cascade
 		);"""
 
@@ -195,15 +196,14 @@ def populate_database():
 
 		# populate adds (user_recipe pivot) table
 
-		for i in range(1, 1000000):
-			email = emails[random.randrange(0, len(emails))]
-			recipe_id = i
+		for recipe_id in range(1, 1000000):
+			user_id = random.randrange(1, 500000)
 
 			adds_insert_stmt = """INSERT INTO
 				adds(email, recipe_id)
-				values ('{}', {});""".format(email, recipe_id)
+				values ('{}', {});""".format(user_id, recipe_id)
 
-			print "pivot record: {}".format(i)
+			print "pivot record: {}".format(recipe_id)
 
 			cur.execute(adds_insert_stmt)
 

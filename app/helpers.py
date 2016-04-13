@@ -1,6 +1,5 @@
 import MySQLdb as mdb 
 import sys
-from faker import Factory
 import random
 
 def all_users():
@@ -19,11 +18,17 @@ def all_ingredients():
 	cleanup_connection(conn)
 	return results
 
-def all_recipe():
+def all_recipe(email=None):
 	cur, conn = initialize_connection()
-	cur.execute('SELECT * FROM recipe');
+	query = 'SELECT * FROM recipe r'
+	
+	if email:
+		query += ' WHERE r.email={}'.format(email)
+	
+	cur.execute(query);
+
 	results = cur.fetchall()
-	print results
+	print results 
 	cleanup_connection(conn)
 	return results
 
@@ -63,6 +68,12 @@ def save_user(user):
 		user(first_name, last_name, email, password, dob, gender) 
 		values("{}", "{}", "{}", "{}", "{}", "{}");
 		""".format(first_name, last_name, email, password, dob, gender))
+
+	cur.execute("""
+		SELECT * FROM user u WHERE u.email={}
+		""".format(email))
+
+
 
 	cleanup_connection(connection)
 

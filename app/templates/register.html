@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block css %}
+{% block head %}
 <style>
   /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
   body {
@@ -215,7 +215,7 @@ value="female">Female</label>
 </div>
 {% endblock %}
         
-{% block js %}
+{% block end %}
   <script src="static/js/register.js"></script>
 {% endblock %}
     
