@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, request,flash
+from flask import render_template, request, flash, session
 import helpers
 from werkzeug.datastructures import MultiDict
 
@@ -24,29 +24,49 @@ def register():
 def login():
 	return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+	session.pop('email', None)
+	return render_template('home.html')
+
 # ====================================
-#				Form Pages
+#				Post Request
 # ====================================
 @app.route('/register', methods=['POST'])
 def save_user():
 	helpers.save_user(request.form)
+	request.cookies.get('email')
+	return render_template('home.html')
 
 @app.route('/login', methods=['POST'])
 def authenticate():
 	helpers.authenticate(request.form)
+	request.cookies.get('email')
 	return render_template('home.html')
+
+@app.route('/recipes', methods=['POST'])
+def recipe_save():
+	helpers.save_recipe(request.form)
+	return render_template('recipe_all.html')
+
+@app.route('/ingredients', methods=['POST'])
+def ingredient_save():
+	helpers.save_ingredient(request.form)
+	return render_template('ingredients_all.html')
+
+
 
 # ====================================
 #				Query Pages
 # ====================================
 @app.route('/users', methods=['GET'])
 def user_all():
-	users = helpers.retrieve_all_users()
+	users = helpers.all_users()
 	return render_template('users_all')
 
 @app.route('/users/<user_id>', methods=['GET'])
 def user_show_by_id(user_id):
-	users = helpers.retrieve_all_users()
+	users = helpers.all_users()
 	return render_template('users_all')
 
 @app.route('/ingredients', methods=['GET'])

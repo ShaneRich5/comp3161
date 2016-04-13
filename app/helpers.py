@@ -4,7 +4,7 @@ from faker import Factory
 import random
 
 
-def retrieve_all_users():
+def all_users():
 	cur, conn = initialize_connection()
 
 	cur.execute('SELECT * FROM user');
@@ -29,6 +29,37 @@ def save_user(user):
 		user(first_name, last_name, email, password, dob, gender) 
 		values("{}", "{}", "{}", "{}", "{}", "{}");
 		""".format(first_name, last_name, email, password, dob, gender))
+
+	cleanup_connection(connection)
+
+def save_ingredient(ingredient):
+	cursor, connection = initialize_connection()
+
+	name = ingredient['name']
+	quantity = ingredient['quantity']
+	units = ingredient['units']
+	description = ingredient['description']
+
+	cur.execute("""
+		INSERT INTO 
+		ingredient(name, quantity, units, description) 
+		values("{}", {}, "{}", "{}");
+		""".format(name, quantity, units, description))
+
+	cleanup_connection(connection)
+
+def save_recipe(recipe):
+	cursor, connection = initialize_connection()
+
+	name = recipe['name']
+	rating = recipe['rating']
+	preparation_time = recipe['preparation_time']
+	
+	cur.execute("""
+		INSERT INTO
+		recipe(name, rating, preparation_time)
+		values("{}", {}, {});
+		""".format(name, rating, preparation_time))
 
 	cleanup_connection(connection)
 
