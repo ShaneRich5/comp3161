@@ -1,5 +1,3 @@
-# from app import app
-
 import MySQLdb as mdb 
 import sys
 from faker import Factory
