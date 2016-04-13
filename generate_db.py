@@ -2,33 +2,36 @@ import MySQLdb as mdb
 import sys
 from faker import Factory
 import random
+from __future__ import print_function
 
 # Globals
 fake = Factory.create()
+
+f = open('test.sql', 'wb')
 
 def migrate_database():
 	try:
 		con = mdb.connect('localhost', 'root', 'root')
 		cur = con.cursor()
 
-		drop_db = 'drop database if exists comp3161'
-		create_db = 'create database comp3161'
-		select_db = 'use comp3161'
+		drop_db = 'drop database if exists db;'
+		create_db = 'create database db;'
+		select_db = 'use db;'
 
 		initialize_db = [
 			drop_db, create_db, select_db
 		]
 
 		for stmt in initialize_db:
-			cur.execute(stmt)
+			# cur.execute(stmt)
+			print stmt, f
 
 		create_user_table = """CREATE TABLE user(
 			user_id integer(50) not null unique AUTO_INCREMENT,
 			email varchar(100) not null,
 			password varchar(80) not null,
 			first_name varchar(80) not null,
-			last_name varchar(80) not null,
-			dob datetime not null,
+			last_name varchar(80) not null
 			gender varchar(10) not null,
 			primary key(user_id)
 		);"""
@@ -66,7 +69,7 @@ def migrate_database():
 		);"""
 
 		create_inventory_table = """CREATE TABLE inventory(
-			inid integer(50) not null unique,
+			inventory_id integer(50) not null unique,
 			quantity integer(20) not null,
 			category varchar(80) not null,
 			updated_at date not null,
@@ -79,8 +82,8 @@ def migrate_database():
 			mealplan_id integer(50) not null unique,
 			meal_id integer(50) not null,
 			countMeal integer(50) not null,
-			updated_at date not null,
-			created_at date not null,
+			# updated_at date not null,
+			# created_at date not null,
 			Primary Key(mealplan_id)
 		);"""
 
@@ -128,7 +131,8 @@ def migrate_database():
 		]
 
 		for stmt in statements:
-			cur.execute(stmt)
+			# cur.execute(stmt)
+			print stmt, f
 
 	except mdb.Error, e:
 		print "Error %d: %s" % (e.args[0], e.args[1])
@@ -144,10 +148,12 @@ def populate_database():
 	try:
 		con = mdb.connect('localhost', 'root', 'root')
 		cur = con.cursor()
-		cur.execute('use comp3161')
+		# cur.execute('use db')
 		
+		print "use db", f
+
 		gender_opt = ['M', 'F']
-		unit_options = ['lb', 'cups']
+		unit_options = ['lb', 'c', 'g', 'oz', 'tsp']
 
 		# populate user
 
@@ -158,7 +164,6 @@ def populate_database():
 			last_name = fake.last_name()
 			gender = gender_opt[random.randrange(0, 2)]
 			email = fake.email()
-			dob = fake.date_time()
 
 			while email in emails:
 				email = fake.email()
@@ -168,14 +173,14 @@ def populate_database():
 			password = first_name
 
 			user_insert_stmt = """INSERT INTO 
-				user(first_name, last_name, gender, email, password, dob)
-				values ("{}", "{}", "{}", "{}", "{}", "{}");""".format(first_name, last_name, gender, email, password, dob)
+				user(first_name, last_name, gender, email, password)
+				values ("{}", "{}", "{}", "{}", "{}", "{}");""".format(first_name, last_name, gender, email, password)
 
 			print "user record: {}".format(i)
-			
-			cur.execute(user_insert_stmt)
+			# cur.execute(user_insert_stmt)
+			print user_insert_stmt, f
 
-		con.commit()
+		# con.commit()
 
 		# populate recipe
 
@@ -190,9 +195,11 @@ def populate_database():
 			
 			print "recipe record: {}".format(index)
 
-			cur.execute(recipe_insert_stmt)
+			# cur.execute(recipe_insert_stmt)
+			 
+			print recipe_insert_stmt, f
 
-		con.commit()
+		# con.commit()
 
 		# populate adds (user_recipe pivot) table
 
@@ -200,17 +207,16 @@ def populate_database():
 			user_id = random.randrange(1, 500000)
 
 			adds_insert_stmt = """INSERT INTO
-				adds(email, recipe_id)
+				adds(user_id, recipe_id)
 				values ('{}', {});""".format(user_id, recipe_id)
 
 			print "pivot record: {}".format(recipe_id)
+			# cur.execute(adds_insert_stmt)
+			print adds_insert_stmt, f
 
-			cur.execute(adds_insert_stmt)
-
-		con.commit()
+		# con.commit()
 
 		# populate ingredients table
-
 
 		for i in range(0, 50000):
 			name = fake.word()
@@ -222,25 +228,27 @@ def populate_database():
 				ingredient(name, quantity, units, note)
 				values ('{}', {}, '{}', '{}');""".format(name, quantity, units, description)
 			
-			# print ingredient_insert_stmt
+			print ingredient_insert_stmt, f
+			# cur.execute(ingredient_insert_stmt)
+			print "ingredient record: {}".format(i)
 
-			cur.execute(ingredient_insert_stmt)
+		# con.commit()
 
 		# populate instructions table
 
-		# for recipe_id in range(1, 1000001):
-		# 	for sequence in range(1, 11):
-		# 		action = fake.words()
+		for recipe_id in range(1, 1000001):
+			for sequence in range(1, 11):
+				action = fake.words()
 
-		# 		instruction_insert_stmt = """INSERT INTO
-		# 			instruction(recipe_id, sequence, action)
-		# 			values({}, {}, '{}');""".format(recipe_id, sequence, action)
+				instruction_insert_stmt = """INSERT INTO
+					instruction(recipe_id, sequence, action)
+					values({}, {}, '{}');""".format(recipe_id, sequence, action)
 
-		# 		cur.execute(instruction_insert_stmt)
+				print instruction_insert_stmt, f
+				# cur.execute(instruction_insert_stmt)
+			print "ingredients record: {}".format(recipe_id)
 
-
-
-		con.commit()
+		# con.commit()
 
 	except mdb.Error, e:
 		print "Error %d: %s" % (e.args[0], e.args[1])
@@ -249,8 +257,6 @@ def populate_database():
 	finally:
 		if con:
 			con.close()
-
-
 
 migrate_database()
 populate_database()

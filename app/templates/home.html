@@ -1,88 +1,25 @@
 {% extends "base.html" %}
 
-{% block head %}
-	<link rel="stylesheet" href="static/css/style.css">
-	<script src="static/js/jquery.js"></script>
-	<script src="static/js/jquery-migrate-1.1.1.js"></script>
-	<script src="static/js/jquery.equalheights.js"></script>
-	<script src="static/js/jquery.ui.totop.js"></script>
-	<script src="static/js/jquery.easing.1.3.js"></script>
-	<script>
-		$(document).ready(function(){
-			$( ".block1" ).mouseover(function() {
-				$(this).addClass( "blur" );
-			});
-			$( ".block1" ).mouseout(function() {
-				$(this).removeClass( "blur" );
-			});
-			$().UItoTop({ easingType: 'easeOutQuart' });
-		}) 
-	</script>
-	<!--[if lt IE 8]>
-       <div style=' clear: both; text-align:center; position: relative;'>
-         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-         </a>
-    <![endif]-->
-    <!--[if lt IE 9]>
-    
-      <script src="js/html5shiv.js"></script>
-      <link rel="stylesheet" media="screen" href="css/ie.css">
-    <![endif]-->
-    <!--[if lt IE 10]>
-      <link rel="stylesheet" media="screen" href="css/ie1.css">
-    <![endif]-->
+{% block css %}
+<link rel="stylesheet" href="/static/css/style.css">
+{% endblock %}
+{% block js %}
+
 {% endblock %}
 
-{% block body %}
-	<!--==============================header=================================-->
- <header> 
-    <h1 class="ompars"><span>Online Meal Planner and Recipe System</span> </h1>
-    <div class="menu_block">
 
-
-    <nav id="bt-menu" class="bt-menu">
-        <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
-        <ul>
-          <li class="current bt-icon "><a href="index.html">Home</a></li>
-       <li class="bt-icon"><a href="index-4.html">Submit Recipe</a></li>
-      <li class="bt-icon"><a href="index-2.html">Meal Plan</a></li>
-      <li class="bt-icon"><a href="index-1.html">Shopping List</a></li>
-      <li>  
-  <!-- HTML for SEARCH BAR -->
-
-      <div id="tfheader">
-        <form id="tfnewsearch" method="get" action="http://www.google.com">
-            <input type="text" id="tfq" class="tftextinput2" name="q" size="21" maxlength="120" value="Search our website"><input type="submit" value=">" class="tfbutton2">
-        </form>
-        <div class="tfclear"></div>
-      </div>
-
-
-      </li>
-        </ul>
-      </nav>
-    
- <div class="clear"></div>
-</div>
-<div class="clear"></div>
-          </div>
-      </div>
-</header>
-
-<!--==============================Content=================================-->
-
+{% block main %}
 <div class="content"><div class="ic">OMPARS where recipes come to life!</div>
 <a href="index-2.html" class="block1">
-  <img src="static/images/blur_img1.jpg" alt="">
+  <img src="/static/img/blur_img1.jpg" alt="">
   <span class="price"><span>New</span><span> Recipes</span><strong></strong></span>
 </a>
 <a href="index-2.html" class="block1">
-  <img src="static/images/blur_img2.jpg" alt="">
+  <img src="/static/img/blur_img2.jpg" alt="">
   <span class="price"><span>Latest</span><span> Meal Plan</span><strong></strong></span>
 </a>
 <a href="index-2.html" class="block1">
-  <img src="static/images/blur_img3.jpg" alt="">
+  <img src="/static/img/blur_img3.jpg" alt="">
   <span class="price"><span>Check Out</span>
 <span>Shopping</span><span> List</span><strong></strong></span>
 </a>
@@ -90,68 +27,46 @@
   <div class="container_12">
     <div class="grid_12">
       <h3>New Recipes</h3>
+      <br>
+      <br>
     </div>
     <div class="grid_3">
       <div class="box maxheight">
-        <img src="static/images/box_img1.jpg" alt="">
+        <img src="/static/img/box_img1.jpg" alt="">
         <div class="title">Breakfast</div>
         Breakfast is the most important meal of the day, so make it special. We have the best breakfast ideas and recipes here!
         <br>
+        <a href="#">More Info</a>
       </div>
     </div>
     <div class="grid_3">
       <div class="box maxheight">
-        <img src="static/images/box_img2.jpg" alt="">
+        <img src="/static/img/box_img2.jpg" alt="">
         <div class="title">Lunch</div>
-    Try our wide array of lunch recipes and ideas and you're sure to find something delicious for every midday occasion!
-    <br>
+		Try our wide array of lunch recipes and ideas and you're sure to find something delicious for every midday occasion!
+		<br>
+        <a href="#">More Info</a>
       </div>
     </div>
     <div class="grid_3">
       <div class="box maxheight">
-        <img src="static/images/box_img3.jpg" alt="">
+        <img src="/static/img/box_img3.jpg" alt="">
         <div class="title">Dinner</div>
-    Spice up weeknight dinners with the best healthy recipes. With these delicious dinner recipes, you can whip up a fresh and tasty meal that's sure to please the entire family.         
-    <br>
+		Spice up weeknight dinners with the best healthy recipes. With these delicious dinner recipes, you can whip up a fresh and tasty meal that's sure to please the entire family.         
+		<br>
+        <a href="#">More Info</a>
       </div>
     </div>
     <div class="grid_3">
       <div class="box maxheight">
-        <img src="static/images/box_img4.jpg" alt="">
+        <img src="/static/img/box_img4.jpg" alt="">
         <div class="title">Snacks</div>
-    Healthy snacking is a great way to combat hunger in between meals. Find recipes and ideas for delicious snacks to munch on at home or take on-the-go!
-    <br>
+		Healthy snacking is a great way to combat hunger in between meals. Find recipes and ideas for delicious snacks to munch on at home or take on-the-go!
+		<br>
+        <a href="#">More Info</a>
       </div>
     </div>
   </div>
 </div>
 
-<!--==============================footer=================================-->
-
-<footer>    
-  <div class="container_12">
-    <div class="grid_6 prefix_3">
-      <h1 class="ompars2"><span>Online Meal Planner and Recipe System</span> </h1>
-      <div class="copy">
-      &copy; 2016 | <a href="#">Privacy Policy</a> <br> Website   designed by Keniel-Shane-Shaunna-Simone
-      </div>
-    </div>
-  </div>
-</footer>
-
-{% endblock %}
-
-{% block end %}
-     <script>
-      $(document).ready(function(){ 
-         $(".bt-menu-trigger").toggle( 
-          function(){
-            $('.bt-menu').addClass('bt-menu-open'); 
-          }, 
-          function(){
-            $('.bt-menu').removeClass('bt-menu-open'); 
-          } 
-        ); 
-      }) 
-    </script>
 {% endblock %}

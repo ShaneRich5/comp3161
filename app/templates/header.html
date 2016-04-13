@@ -1,0 +1,50 @@
+
+<header> 
+  <div class="container_12">
+   <div class="grid_12"> 
+    <div class="socials">
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"class="last"></a>
+    </div>
+    <a href="/"><h1 class="ompars"><span>Online Meal Planner and Recipe System</span> </h1></a>
+    <div class="menu_block">
+
+<ul class="nav nav-pills">
+  {% if session.logged_in %}
+  <li role="presentation" class="active"><a href="/">Home</a></li>
+  <li role="presentation"><a href="/shoppinglist">Shopping List</a></li>
+  <li role="presentation"><a href="/logout">Logout</a></li>
+  <li role="presentation"><a href="/mealplan">Meal Plan</a></li>
+  <li role="presentation"><a href="/addrecipe">Add Recipe</a></li>
+  {% else %}
+  <li role="presentation"><a href="/login">Login</a></li>
+  <li role="presentation"><a href="/register">Register</a></li>
+  <li role="presentation"><a href="/contact">Contact</a></li>
+  {% endif %}
+</ul>
+    
+  
+
+    
+ <div class="clear"></div>
+</div>
+<div class="clear"></div>
+</br>
+</br>
+<div class="search">
+<form action="/search/" method="post">
+  <input type="text" name=search value="{{ request.form.search }}">
+</br>
+  <div class="actions"><input type="submit" value="Search"></div>
+</form>
+</div>
+{% for message in get_flashed_messages() %}
+<div class="flash">
+{{ message }}
+
+</div>
+{% endfor %}
+          </div>
+      </div>
+</header>
